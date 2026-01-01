@@ -2,23 +2,20 @@ name: JARTIC Ingest
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: '*/10 * * * *' # every 10 minutes
+  workflow_dispatch:
 
 jobs:
   ingest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run JARTIC ingest
+          node-version: 20
+      - run: npm install
+      - run: node ingest.js
         env:
-          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
-        run: node ingest.js
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}

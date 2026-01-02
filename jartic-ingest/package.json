@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
+    "@supabase/supabase-js": "^2.89.0",
     "node-fetch": "^3.3.2",
     "pg": "^8.12.0"
-  }
+  },
+  "description": "",
+  "main": "ingest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
